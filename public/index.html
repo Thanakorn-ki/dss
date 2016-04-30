@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="/js/materialize.min.js"></script>
+        <script src="/js/angular-materialize.js"></script>
+        <script src="app.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div ng-controller="TodoListController as todoList">
+            <div class="navbar-fixed">
+                <nav class="blue lighten-3">
+                    <div class="nav-wrapper">
+                        <a href="#!" class="center brand-logo blue-grey-text text-darken-4">ระบบการตัดสินใจเลือกสถานีใกล้ๆ</a>
+
+                    </div>
+                </nav>
+            </div>
+            <div class="container">
+
+                <div class="row">
+                    <div class="input-field col s12 m6 l6">
+                        <select ng-model="test" ng-change="select()" width="10">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="hospital">โรงพยาบาล</option>
+                            <option value="museum">พิพิธภัณฑ์</option>
+                            <option value="park">สวนสาธารณะ</option>
+                            <option value="police">สถานีตำรวจ</option>
+                            <option value="restaurant">ร้านอาหาร</option>
+                            <option value="store">ห้างสรรพสินค้า</option>
+                            <option value="university">มหาวิทยาลัย</option>
+                            <option value="night_club">สถานบันเทิง</option>
+                            <option value="atm">ตู้ATM</option>
+                        </select>
+                        <label>เลือกสิ่งที่ต้องการจะหา</label>
+                    </div>
+                    select :{{test}}
+                    radius:{{radius}}
+                    <div class="col s12 m6 l6">
+                        <form action="#">
+                            <p class="range-field">
+                                <input type="range" id="test5" ng-model="radius" min="500" max="1000" ng-change="select()"/>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <!-- ************************************************************************* -->
+                <div class="row">
+
+                    <div ng-show="load">
+                        <div class="progress">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+
+                    <div ng-repeat="maps in map">
+                        <div class="col s12 m6 l3">
+                            <div class="card hoverable">
+                                <div class="card-image">
+                                    <img ng-src="{{maps.icon}}">
+                                    <span class="card-title">Card Title</span>
+                                </div>
+                                <div class="card-content">
+                                    <p>{{maps.name}}</p>
+                                </div>
+                                <div class="card-action cyan lighten-4">
+                                    <a href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}"  target="_blank"  class="brown-text text-darken-3">Open Maps</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- ////////////////////////////////////////////////////////////////////////////////  -->
+
+    </body>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
+
+</html>
