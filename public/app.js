@@ -14,25 +14,11 @@ angular.module('todoApp', ['ui.materialize'])
         }
         $http.post('/search', data).then(function (req, res) {
           $scope.load = false
-          console.log(req.data)
+          $scope.map = req.data.results
+          console.log(req.data.results)
         })
-
-      // if ($scope.test !== '' && $scope.radius !== 0) {
-      //
-      //   $http.get('https://maps.googleapis.com/maps/api/place/textsearch/json?location='+$scope.location_now +'&query=' + $scope.test + '&radius=' + $scope.radius + '&key=AIzaSyDTx6k0EMtaMUJL1gP9w4rDc4qwp8LnDMc')
-      //     .then(function (res) {
-      //       $scope.map = res.data
-      //       console.log(res.data.results[0].geometry)
-      //       $scope.map = $scope.map.results
-      //       // console.log($scope.map)
-      //       $scope.load = false
-      //       // console.log($scope.load)
-      //     }, function (err) {
-      //       console.log('err')
-      //     })
       } else {
         $scope.load = false
-      // console.log($scope.test)
       }
     }
   })
