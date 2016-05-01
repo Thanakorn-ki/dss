@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="offset-s5 s12 m6 l6">
                         <blockquote>
-                            <i class="material-icons">my_location</i>
+                            <i class="material-icons tiny">my_location</i>
                             ตำแหน่งปัจจุบัน :
                             {{}}
                         </blockquote>
@@ -76,11 +76,11 @@
                                 </div>
                                 <div class="card-panel">
                                     <p>{{maps.name}}</p>
-                                    <p>{{maps.distance.text}}</p>
                                 </div>
 
                                 <div class="card-action cyan lighten-4">
-                                    <a href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}" target="_blank" class="brown-text text-darken-3">Open Maps</a>
+                                    <a href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}/data=!3m1!4b1!4m2!4m1!3e0" target="_blank" class="brown-text text-darken-3">Open Maps</a>
+                                    <p class="right">  <i class="material-icons tiny">navigation</i> {{maps.distance.text}}</p>
                                 </div>
                             </div>
                         </div>

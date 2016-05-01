@@ -6,6 +6,7 @@ angular.module('todoApp', ['ui.materialize'])
     $scope.routes = []
     $scope.location_now = '13.7468351,100.5327397'
     $scope.select = function () {
+      $scope.routes = []
       var data = {
         location_now: $scope.location_now,
         test: $scope.test,
@@ -48,7 +49,7 @@ angular.module('todoApp', ['ui.materialize'])
           distance: req.data.routes[0].legs[0].distance,
           duration: req.data.routes[0].legs[0].duration
         }
-        console.log(req.data)
+        // console.log(req.data)
         $scope.routes.push(temp)
       })
     }
