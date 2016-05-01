@@ -3,6 +3,7 @@ angular.module('todoApp', ['ui.materialize'])
   .controller('TodoListController', function ($http, $scope) {
     $scope.test = ''
     $scope.radius = 500
+    $scope.routes = []
     $scope.location_now = '13.7468351,100.5327397'
     $scope.select = function () {
       var data = {
@@ -16,25 +17,39 @@ angular.module('todoApp', ['ui.materialize'])
           if (req.data.status === 'OK') {
             $scope.load = false
             $scope.map = req.data.results
-            $scope.ways()
+            $scope.map.forEach(function (item) {ways(item)})
           }else if (req.data.status === 'OVER_QUERY_LIMIT') {
             $scope.load = false
-            alert('time LIMIT')
+            alert('Time LIMIT')
           }
-        console.log(req.data.results)
+        // console.log(req.data.results)
         })
       } else {
         $scope.load = false
       }
     }
-    $scope.ways = function () {
-      var data = {
-        location_now: $scope.location_now,
-        test: $scope.test,
-        radius: $scope.radius
+
+    var ways = function (item) {
+      var multi = {
+        let: item.geometry.location.lat,
+        lng: item.geometry.location.lng,
+        location_now: $scope.location_now
       }
-      $http.post('/ways', data).then(function (req, res) {
+
+      $http.post('/ways', multi).then(function (req, res) {
+        var temp = {
+          icon: item.icon,
+          name: item.name,
+          geometry: {
+            location: {
+              lat: item.geometry.location.lat,
+              lng: item.geometry.location.lng
+          }},
+          distance: req.data.routes[0].legs[0].distance,
+          duration: req.data.routes[0].legs[0].duration
+        }
         console.log(req.data)
+        $scope.routes.push(temp)
       })
     }
   })

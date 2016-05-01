@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="/css/materialize.min.css">
         <!-- Icon google materialize -->
@@ -19,7 +20,7 @@
             <div class="navbar-fixed">
                 <nav class="blue lighten-3">
                     <div class="nav-wrapper">
-                        <a href="#!" class="center brand-logo blue-grey-text text-darken-4">Desision Suport Route Selection</a>
+                        <a href="#!" class="center brand-logo blue-grey-text text-darken-4">Decision Suport Route Selection</a>
 
                     </div>
                 </nav>
@@ -53,7 +54,9 @@
                     <div class="col s12 m6 l6">
                         <form action="#">
                             <p class="range-field">
+                              <label>เลือกสิ่งที่ต้องการจะหา</label>
                                 <input type="range" id="test5" ng-model="radius" min="500" max="1000" ng-change="select()"/>
+
                             </p>
                         </form>
                     </div>
@@ -65,14 +68,15 @@
                             <div class="indeterminate"></div>
                         </div>
                     </div>
-                    <div ng-repeat="maps in map">
+                    <div ng-repeat="maps in routes">
                         <div class="col s12 m6 l3">
                             <div class="card hoverable medium">
                                 <div class="card-image waves-effect waves-block waves-light">
-                                    <img ng-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyA9pnLokpiT4egOd3J5Lhfb1I5PHmwyyXk&photoreference={{maps.photos.reference}}">
+                                    <img ng-src="{{maps.icon}}">
                                 </div>
                                 <div class="card-panel">
                                     <p>{{maps.name}}</p>
+                                    <p>{{maps.distance.text}}</p>
                                 </div>
 
                                 <div class="card-action cyan lighten-4">
