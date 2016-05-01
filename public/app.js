@@ -21,7 +21,7 @@ angular.module('todoApp', ['ui.materialize'])
             $scope.map.forEach(function (item) {ways(item)})
           }else if (req.data.status === 'OVER_QUERY_LIMIT') {
             $scope.load = false
-            alert('Time LIMIT')
+            console.log('Time LIMIT(ค้นหา)')
           }
         // console.log(req.data.results)
         })
@@ -38,19 +38,22 @@ angular.module('todoApp', ['ui.materialize'])
       }
 
       $http.post('/ways', multi).then(function (req, res) {
-        var temp = {
-          icon: item.icon,
-          name: item.name,
-          geometry: {
-            location: {
-              lat: item.geometry.location.lat,
-              lng: item.geometry.location.lng
-          }},
-          distance: req.data.routes[0].legs[0].distance,
-          duration: req.data.routes[0].legs[0].duration
+        if (req.data.status === 'OK') {
+          var temp = {
+            icon: item.icon,
+            name: item.name,
+            geometry: {
+              location: {
+                lat: item.geometry.location.lat,
+                lng: item.geometry.location.lng
+            }},
+            distance: req.data.routes[0].legs[0].distance,
+            duration: req.data.routes[0].legs[0].duration
+          }
+          $scope.routes.push(temp)
+        } else if (req.data.status === 'OVER_QUERY_LIMIT') {
+          console.log('Time LIMIT(ระยะทาง)')
         }
-        // console.log(req.data)
-        $scope.routes.push(temp)
       })
     }
   })
