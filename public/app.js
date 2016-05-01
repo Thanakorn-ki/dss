@@ -18,6 +18,7 @@ angular.module('todoApp', ['ui.materialize'])
           if (req.data.status === 'OK') {
             $scope.load = false
             $scope.map = req.data.results
+            console.log( req.data);
             $scope.map.forEach(function (item) {ways(item)})
           }else if (req.data.status === 'OVER_QUERY_LIMIT') {
             $scope.load = false
