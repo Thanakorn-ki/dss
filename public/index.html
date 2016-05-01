@@ -6,26 +6,34 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="/css/materialize.min.css">
-
+        <!-- Icon google materialize -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Compiled and minified JavaScript -->
         <script src="/js/materialize.min.js"></script>
         <script src="/js/angular-materialize.js"></script>
         <script src="app.js"></script>
         <title></title>
     </head>
-
     <body>
         <div ng-controller="TodoListController as todoList">
             <div class="navbar-fixed">
                 <nav class="blue lighten-3">
                     <div class="nav-wrapper">
-                        <a href="#!" class="center brand-logo blue-grey-text text-darken-4">ระบบการตัดสินใจเลือกสถานีใกล้ๆ</a>
+                        <a href="#!" class="center brand-logo blue-grey-text text-darken-4">Desision Suport Route Selection</a>
 
                     </div>
                 </nav>
             </div>
             <div class="container">
-
+                <div class="row">
+                    <div class="offset-s5 s12 m6 l6">
+                        <blockquote>
+                            <i class="material-icons">my_location</i>
+                            ตำแหน่งปัจจุบัน :
+                            {{}}
+                        </blockquote>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="input-field col s12 m6 l6">
                         <select ng-model="test" ng-change="select()" width="10">
@@ -42,8 +50,6 @@
                         </select>
                         <label>เลือกสิ่งที่ต้องการจะหา</label>
                     </div>
-                    select :{{test}}
-                    radius:{{radius}}
                     <div class="col s12 m6 l6">
                         <form action="#">
                             <p class="range-field">
@@ -54,25 +60,23 @@
                 </div>
                 <!-- ************************************************************************* -->
                 <div class="row">
-
                     <div ng-show="load">
                         <div class="progress">
                             <div class="indeterminate"></div>
                         </div>
                     </div>
-
                     <div ng-repeat="maps in map">
                         <div class="col s12 m6 l3">
-                            <div class="card hoverable">
-                                <div class="card-image">
-                                    <img ng-src="{{maps.icon}}">
-                                    <span class="card-title">Card Title</span>
+                            <div class="card hoverable medium">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img ng-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyA9pnLokpiT4egOd3J5Lhfb1I5PHmwyyXk&photoreference={{maps.photos.reference}}">
                                 </div>
-                                <div class="card-content">
+                                <div class="card-panel">
                                     <p>{{maps.name}}</p>
                                 </div>
+
                                 <div class="card-action cyan lighten-4">
-                                    <a href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}"  target="_blank"  class="brown-text text-darken-3">Open Maps</a>
+                                    <a href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}" target="_blank" class="brown-text text-darken-3">Open Maps</a>
                                 </div>
                             </div>
                         </div>
@@ -82,13 +86,10 @@
             </div>
         </div>
         <!-- ////////////////////////////////////////////////////////////////////////////////  -->
-
     </body>
     <script type="text/javascript">
-
         $(document).ready(function() {
             $('select').material_select();
         });
     </script>
-
 </html>
