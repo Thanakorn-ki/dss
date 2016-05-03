@@ -7,20 +7,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="/css/materialize.min.css">
+        <!-- /////////////////////// -->
+        <link rel="stylesheet" href="/css/styles.css">
+        <!-- ///////////////////////////  -->
         <link rel="stylesheet" href="/css/animate.css">
         <!-- Icon google materialize -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Compiled and minified JavaScript -->
         <script src="/js/materialize.min.js"></script>
         <script src="/js/angular-materialize.js"></script>
+        <script src="/js/index.js"></script>
         <script src="app.js"></script>
         <title></title>
         <script src="/js/wow.min.js"></script>
         <script>
             new WOW().init();
         </script>
+        <style media="screen">
+            .text {
+                display: inline-block;
+                width: 180px;
+                white-space: nowrap;
+                overflow: hidden !important;
+                text-overflow: ellipsis;
+            }
+
+        </style>
     </head>
     <body class="grey lighten-1">
+
         <div ng-controller="TodoListController as todoList">
             <div class="navbar-fixed">
                 <nav class="blue lighten-3">
@@ -30,82 +45,409 @@
                     </div>
                 </nav>
             </div>
-            <div class="container">
-                <div class="row card-panel">
-                    <div class="offset-s5 s12 m6 l6">
-                        <blockquote>
-                            <i class="material-icons tiny">my_location</i>
-                            ตำแหน่งปัจจุบัน :
-                        </blockquote>
+            <!-- full Mobile -->
+            <!-- <div class="hide-on-large-only hide-on-med-only"> -->
+            <!-- menu mobile -->
+            <!-- <div class="hide-on-large-only hide-on-med-only">
+                    <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+                        <a class="btn-floating btn-large red modal-trigger" href="#modal1">
+                            <i class="material-icons">menu</i>
+                        </a>
                     </div>
-                </div>
-                <div class="row card-panel">
-                    <div class="input-field col s12 m6 l6">
-                        <select ng-model="test" ng-change="select()" width="10">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="hospital">โรงพยาบาล</option>
-                            <option value="museum">พิพิธภัณฑ์</option>
-                            <option value="park">สวนสาธารณะ</option>
-                            <option value="police">สถานีตำรวจ</option>
-                            <option value="restaurant">ร้านอาหาร</option>
-                            <option value="store">ห้างสรรพสินค้า</option>
-                            <option value="university">มหาวิทยาลัย</option>
-                            <option value="night_club">สถานบันเทิง</option>
-                            <option value="atm">ตู้ATM</option>
-                        </select>
-                        <label>เลือกสิ่งที่ต้องการจะหา</label>
-                    </div>
-                    <div class="col s12 m6 l6">
-                        <form action="#">
-                            <p class="range-field">
-                                <label>ระยะทาง : เมตร
-                                    {{radius}}</label>
-                                <input type="range" id="test5" ng-model="radius" min="500" max="1000" ng-change="select()"/>
+                </div> -->
+            <!-- end menu mobile -->
+            <!-- <div id="modal1" class="modal bottom-sheet">
+                    <div class="modal-content">
+                        <ul class="collection">
+                            <li class="collection-item">
+                                <i class="material-icons circle">folder</i>
+                                <span class="title">Title</span>
+                                <p>First Line
+                                    <br>
+                                    Second Line
+                                </p>
+                                <div class="input-field col s12 m6 l6">
+                                    <select ng-model="test" ng-change="select()" width="10">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="hospital">โรงพยาบาล</option>
+                                        <option value="museum">พิพิธภัณฑ์</option>
+                                        <option value="park">สวนสาธารณะ</option>
+                                        <option value="police">สถานีตำรวจ</option>
+                                        <option value="restaurant">ร้านอาหาร</option>
+                                        <option value="store">ห้างสรรพสินค้า</option>
+                                        <option value="university">มหาวิทยาลัย</option>
+                                        <option value="night_club">สถานบันเทิง</option>
+                                        <option value="atm">ตู้ATM</option>
+                                    </select>
+                                    <label>เลือกสิ่งที่ต้องการจะหา
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
 
-                            </p>
-                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">ปิด</a>
+                    </div>
+                </div> -->
+            <!-- menu Desktop-->
+            <!-- <div class="">
+                    <div class="row card-panel">
+                        <div class="offset-s5 s12 m6 l6">
+                            <blockquote>
+                                <i class="material-icons tiny">my_location</i>
+                                ตำแหน่งปัจจุบัน :
+                                <div class="switch">
+                                    <label>
+                                        Off
+                                        <input type="checkbox">
+                                        <span class="lever"></span>
+                                        On
+                                    </label>
+                                </div>
+                                <button ng-click="getLocation()">Try It</button>
+                                <div ng-show="false">
+                                    <input type="text" id="lat" ng-model="Latitude">
+                                    <input type="text" id="long" ng-model="Longitude">
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="row card-panel">
+                        <div class="input-field col s12 m6 l6">
+                            <select ng-model="test" ng-change="select()" width="10">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="hospital">โรงพยาบาล</option>
+                                <option value="museum">พิพิธภัณฑ์</option>
+                                <option value="park">สวนสาธารณะ</option>
+                                <option value="police">สถานีตำรวจ</option>
+                                <option value="restaurant">ร้านอาหาร</option>
+                                <option value="store">ห้างสรรพสินค้า</option>
+                                <option value="university">มหาวิทยาลัย</option>
+                                <option value="night_club">สถานบันเทิง</option>
+                                <option value="atm">ตู้ATM</option>
+                            </select>
+                            <label>เลือกสิ่งที่ต้องการจะหา
+                            </label>
+                        </div>
+                        <div class="col s12 m6 l6">
+                            <form action="#">
+                                <p class="range-field">
+                                    <label>ระยะทาง : เมตร
+                                        {{radius}}</label>
+                                    <input type="range" id="test5" ng-model="radius" min="500" max="1000" ng-change="select()"/>
+
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div> -->
+            <!-- end Menu -->
+            <!-- <div class="row"> -->
+            <!-- Progress -->
+            <!-- <div ng-show="load">
+                        <div class="progress">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l4">
+                        <div class="wrapper wow slideInUp">
+                            <div class="card radius shadowDepth1">
+                                <div class="card__image border-tlr-radius">
+                                    <img height="250px" ng-src="images/unnamed.jpg">
+                                </div>
+                                <div class="card__content card__padding">
+                                    <div class="test">
+                                        <a class="btn-floating btn-large waves-effect waves-light blue" href="http://www.google.com">
+                                            <i class="small material-icons">navigation</i>
+                                        </a>
+                                    </div>
+                                    <div class="card__meta">
+                                        <a href="#">ทางรถ</a>
+                                        <time>3.5 กม.</time>
+                                    </div>
+                                    <article class="card__article">
+                                        <h6>
+                                            50/6 ม.1 ต.ท่าข้าม อ.สามพราน จ.นครปฐม 73110
+                                        </h6>
+
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l4">
+                        <div class="wrapper wow slideInUp">
+                            <div class="card radius shadowDepth1">
+                                <div class="card__image border-tlr-radius">
+                                    <img height="250px" ng-src="images/unnamed.jpg">
+                                </div>
+                                <div class="card__content card__padding">
+                                    <div class="test">
+                                        <a class="btn-floating btn-large waves-effect waves-light blue" href="http://www.google.com">
+                                            <i class="small material-icons">navigation</i>
+                                        </a>
+                                    </div>
+                                    <div class="card__meta">
+                                        <a href="#">ทางรถ</a>
+                                        <time>3.5 กม.</time>
+                                    </div>
+                                    <article class="card__article">
+                                        <h6>
+                                            50/6 ม.1 ต.ท่าข้าม อ.สามพราน จ.นครปฐม 73110
+                                        </h6>
+
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+            <!-- ********************************** -->
+            <!-- <div ng-repeat="maps in routes">
+                      <div class="col s12 m6 l4">
+                          <div class="wow sliderUP">
+                              <div class="card radius shadowDepth1">
+                                  <div class="card__image border-tlr-radius">
+                                      <img height="300%" ng-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{maps.photos}}&key=AIzaSyA9pnLokpiT4egOd3J5Lhfb1I5PHmwyyXk">
+                                  </div>
+                                  <div class="card__content card__padding">
+                                      <div class="test">
+                                          <a class="btn-floating btn-large waves-effect waves-light blue"
+                                             href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}/data=!3m1!4b1!4m2!4m1!3e0"
+                                             target="_blank" >
+                                              <i class="small material-icons">navigation</i>
+                                          </a>
+                                      </div>
+                                      <div class="card__meta">
+                                          <a href="#">ทางรถ</a>
+                                          <time>{{maps.distance.text}}</p></time>
+                                      </div>
+                                      <article class="card__article">
+                                          <h6>{{maps.name}}</h6>
+
+                                          <p>{{maps.vicinity}}</p>
+                                      </article>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div> -->
+            <!-- end ng-repeat -->
+            <!-- </div>
+            </div> -->
+            <!-- End full Mobile -->
+            <!-- Desktop -->
+            <div class="container">
+
+                <div id="modal1" class="modal bottom-sheet">
+                    <div class="modal-content">
+                        <ul class="collection">
+                            <li class="collection-item">
+                                <i class="material-icons circle">folder</i>
+                                <span class="title">Title</span>
+                                <p>First Line
+                                    <br>
+                                    Second Line
+                                </p>
+                                <div class="input-field col s12 m6 l6">
+                                    <select ng-model="test" ng-change="select()" width="10">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="hospital">โรงพยาบาล</option>
+                                        <option value="museum">พิพิธภัณฑ์</option>
+                                        <option value="park">สวนสาธารณะ</option>
+                                        <option value="police">สถานีตำรวจ</option>
+                                        <option value="restaurant">ร้านอาหาร</option>
+                                        <option value="store">ห้างสรรพสินค้า</option>
+                                        <option value="university">มหาวิทยาลัย</option>
+                                        <option value="night_club">สถานบันเทิง</option>
+                                        <option value="atm">ตู้ATM</option>
+                                    </select>
+                                    <label>เลือกสิ่งที่ต้องการจะหา
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">ปิด</a>
                     </div>
                 </div>
+                <!-- menu Desktop-->
+                <div class="">
+                    <div class="row card-panel">
+                        <div class="col s12 m4 l4">
+                            <blockquote>
+                                <i class="material-icons tiny">my_location</i>
+                                ตำแหน่งปัจจุบัน :
+                                <div ng-show="false">
+                                    <input type="text" id="lat" ng-model="Latitude">
+                                    <input type="text" id="long" ng-model="Longitude">
+                                </div>
+                            </blockquote>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <div class="switch">
+                                <label>
+                                    Off
+                                    <input type="checkbox" ng-model="now_location" ng-click="getLocation()">
+                                    <span class="lever"></span>
+                                    On
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <div ng-show="!now_location">
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">search</i>
+                                    <input id="icon_prefix" type="text" class="validate active">
+                                    <label for="icon_prefix">search</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row card-panel">
+                        <div class="input-field col s12 m6 l6">
+                            <select ng-model="test" ng-change="select()" width="10">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="hospital">โรงพยาบาล</option>
+                                <option value="museum">พิพิธภัณฑ์</option>
+                                <option value="park">สวนสาธารณะ</option>
+                                <option value="police">สถานีตำรวจ</option>
+                                <option value="restaurant">ร้านอาหาร</option>
+                                <option value="store">ห้างสรรพสินค้า</option>
+                                <option value="university">มหาวิทยาลัย</option>
+                                <option value="night_club">สถานบันเทิง</option>
+                                <option value="atm">ตู้ATM</option>
+                            </select>
+                            <label>เลือกสิ่งที่ต้องการจะหา
+                            </label>
+                        </div>
+                        <div class="col s12 m6 l6">
+                            <form action="#">
+                                <p class="range-field">
+                                    <label>ระยะทาง : เมตร
+                                        {{radius}}</label>
+                                    <input type="range" id="test5" ng-model="radius" min="500" max="1000" ng-change="select()"/>
+
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- end Menu -->
                 <!-- ************************************************************************* -->
+
                 <div class="row">
+                    <!-- Progress -->
                     <div ng-show="load">
                         <div class="progress">
                             <div class="indeterminate"></div>
                         </div>
                     </div>
-                    <div ng-repeat="maps in routes">
-                        <div class="col s12 m3">
-                            <div class="card medium wow rubberBand">
-                                <div class="card-image">
-                                    <img ng-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{maps.photos}}&key=AIzaSyA9pnLokpiT4egOd3J5Lhfb1I5PHmwyyXk">
-                                    <span class="card-title">
-                                        <p>{{maps.name}}</p>
-                                    </span>
+                    <!-- <div class="col s12 m6 l4">
+                        <div class="wrapper wow slideInUp">
+                            <div class="card radius shadowDepth1">
+                                <div class="card__image border-tlr-radius">
+                                    <img height="250px" ng-src="images/unnamed.jpg">
                                 </div>
-                                <div class="card-content">
-                                    <p>{{maps.vicinity}}</p>
-                                </div>
-                                <div class="card-action">
-                                    <p class="left">
-                                        <a href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}/data=!3m1!4b1!4m2!4m1!3e0" target="_blank" class="brown-text text-darken-3">Open Maps</a>
-                                    </p>
-                                    <p class="right">
-                                        <i class="material-icons tiny">navigation</i>
-                                        {{maps.distance.text}}</p>
+                                <div class="card__content card__padding">
+                                    <div class="test">
+                                        <a class="btn-floating btn-large waves-effect waves-light blue" href="http://www.google.com">
+                                            <i class="small material-icons">navigation</i>
+                                        </a>
+                                    </div>
+                                    <div class="card__meta">
+                                        <a href="#">ทางรถ</a>
+                                        <time>3.5 กม.</time>
+                                    </div>
+                                    <article class="card__article">
+                                        <h6>
+                                            50/6 ม.1 ต.ท่าข้าม อ.สามพราน จ.นครปฐม 73110
+                                        </h6>
+
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+                                    </article>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col s12 m6 l4">
+                        <div class="wrapper wow slideInUp">
+                            <div class="card radius shadowDepth1">
+                                <div class="card__image border-tlr-radius">
+                                    <img height="250px" ng-src="images/unnamed.jpg">
+                                </div>
+                                <div class="card__content card__padding">
+                                    <div class="test">
+                                        <a class="btn-floating btn-large waves-effect waves-light blue" href="http://www.google.com">
+                                            <i class="small material-icons">navigation</i>
+                                        </a>
+                                    </div>
+                                    <div class="card__meta">
+                                        <a href="#">ทางรถ</a>
+                                        <time>3.5 กม.</time>
+                                    </div>
+                                    <article class="card__article">
+                                        <h6>
+                                            50/6 ม.1 ต.ท่าข้าม อ.สามพราน จ.นครปฐม 73110
+                                        </h6>
 
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- ********************************** -->
+                    <div ng-repeat="maps in routes">
+                        <div class="col s12 m6 l4">
+                            <div class="wrapper wow slideInUp">
+                                <div class="card radius shadowDepth1">
+                                    <div class="card__image border-tlr-radius">
+                                        <img height="300%" ng-src="{{maps.photos}}">
+                                    </div>
+                                    <div class="card__content card__padding" style="">
+                                        <div class="test">
+                                            <a class="btn-floating btn-large waves-effect waves-light blue" href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}/data=!3m1!4b1!4m2!4m1!3e0" target="_blank">
+                                                <i class="small material-icons">navigation</i>
+                                            </a>
+                                        </div>
+                                        <div class="card__meta">
+                                            <a href="#">ทางรถ</a>
+                                            <time>{{maps.distance.text}}</p>
+                                        </time>
+                                    </div>
+                                    <article class="card__article">
+                                        <h6>{{maps.name}}</h6>
+
+                                        <p>{{maps.vicinity}}</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
+                <!-- end ng-repeat -->
             </div>
+            <!-- end row -->
         </div>
-        <!-- ////////////////////////////////////////////////////////////////////////////////  -->
-    </body>
+        <!-- End Desktop -->
+        <!-- end Container -->
+    </div>
+    <!-- end controller -->
+    <!-- ////////////////////////////////////////////////////////////////////////////////  -->
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('select').material_select();
         });
+        $(document).ready(function() {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
     </script>
+</body>
 </html>
