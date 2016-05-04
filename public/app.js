@@ -5,7 +5,7 @@ angular.module('todoApp', ['ui.materialize'])
     $scope.radius = 500
     $scope.routes = []
     $scope.location_now = '13.7468351,100.5327397'
-    $scope.key = 'AIzaSyDTx6k0EMtaMUJL1gP9w4rDc4qwp8LnDMc'
+    $scope.key = 'AIzaSyA9pnLokpiT4egOd3J5Lhfb1I5PHmwyyXk'
     $scope.getLocation = function () {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition)
