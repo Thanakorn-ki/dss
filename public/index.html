@@ -46,15 +46,15 @@
                 </nav>
             </div>
             <!-- full Mobile -->
-            <!-- <div class="hide-on-large-only hide-on-med-only"> -->
+            <div class="hide-on-large-only hide-on-med-only">
             <!-- menu mobile -->
-            <!-- <div class="hide-on-large-only hide-on-med-only">
+            <div class="hide-on-large-only hide-on-med-only">
                     <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
                         <a class="btn-floating btn-large red modal-trigger" href="#modal1">
                             <i class="material-icons">menu</i>
                         </a>
                     </div>
-                </div> -->
+              </div>
             <!-- end menu mobile -->
             <!-- <div id="modal1" class="modal bottom-sheet">
                     <div class="modal-content">
@@ -91,28 +91,38 @@
                     </div>
                 </div> -->
             <!-- menu Desktop-->
-            <!-- <div class="">
-                    <div class="row card-panel">
-                        <div class="offset-s5 s12 m6 l6">
-                            <blockquote>
-                                <i class="material-icons tiny">my_location</i>
-                                ตำแหน่งปัจจุบัน :
-                                <div class="switch">
-                                    <label>
-                                        Off
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                        On
-                                    </label>
-                                </div>
-                                <button ng-click="getLocation()">Try It</button>
-                                <div ng-show="false">
-                                    <input type="text" id="lat" ng-model="Latitude">
-                                    <input type="text" id="long" ng-model="Longitude">
-                                </div>
-                            </blockquote>
-                        </div>
-                    </div>
+            <div class="">
+              <div class="row card-panel">
+                  <div class="col s12 m4 l4">
+                      <blockquote>
+                          <i class="material-icons tiny">my_location</i>
+                          ตำแหน่งปัจจุบัน :
+                          <div ng-show="false">
+                              <input type="text" id="lat" ng-model="Latitude">
+                              <input type="text" id="long" ng-model="Longitude">
+                          </div>
+                      </blockquote>
+                  </div>
+                  <div class="col s12 m4 l4">
+                      <div class="switch">
+                          <label>
+                              Off
+                              <input type="checkbox" ng-model="now_location" ng-click="getLocation()">
+                              <span class="lever"></span>
+                              On
+                          </label>
+                      </div>
+                  </div>
+                  <div class="col s12 m4 l4">
+                      <div ng-show="!now_location">
+                          <div class="input-field col s6">
+                              <i class="material-icons prefix">search</i>
+                              <input id="icon_prefix" type="text" class="validate active">
+                              <label for="icon_prefix">search</label>
+                          </div>
+                      </div>
+                  </div>
+              </div>
                     <div class="row card-panel">
                         <div class="input-field col s12 m6 l6">
                             <select ng-model="test" ng-change="select()" width="10">
@@ -141,17 +151,17 @@
                             </form>
                         </div>
                     </div>
-                </div> -->
+                </div>
             <!-- end Menu -->
             <!-- <div class="row"> -->
             <!-- Progress -->
-            <!-- <div ng-show="load">
+            <div ng-show="load">
                         <div class="progress">
                             <div class="indeterminate"></div>
                         </div>
                     </div>
-                    <div class="col s12 m6 l4">
-                        <div class="wrapper wow slideInUp">
+                    <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
+                        <div class="wrapper wow slideInUp" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
                             <div class="card radius shadowDepth1">
                                 <div class="card__image border-tlr-radius">
                                     <img height="250px" ng-src="images/unnamed.jpg">
@@ -177,8 +187,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m6 l4">
-                        <div class="wrapper wow slideInUp">
+                    <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
+                        <div class="wrapper wow slideInUp" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
                             <div class="card radius shadowDepth1">
                                 <div class="card__image border-tlr-radius">
                                     <img height="250px" ng-src="images/unnamed.jpg">
@@ -203,11 +213,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
             <!-- ********************************** -->
             <!-- <div ng-repeat="maps in routes">
-                      <div class="col s12 m6 l4">
-                          <div class="wow sliderUP">
+                      <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
+                          <div class="wow sliderUP" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
                               <div class="card radius shadowDepth1">
                                   <div class="card__image border-tlr-radius">
                                       <img height="300%" ng-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{maps.photos}}&key=AIzaSyA9pnLokpiT4egOd3J5Lhfb1I5PHmwyyXk">
@@ -235,46 +245,12 @@
                       </div>
                   </div> -->
             <!-- end ng-repeat -->
-            <!-- </div>
-            </div> -->
+            <!-- </div>-->
+          </div>
             <!-- End full Mobile -->
+            
             <!-- Desktop -->
-            <div class="container">
-
-                <div id="modal1" class="modal bottom-sheet">
-                    <div class="modal-content">
-                        <ul class="collection">
-                            <li class="collection-item">
-                                <i class="material-icons circle">folder</i>
-                                <span class="title">Title</span>
-                                <p>First Line
-                                    <br>
-                                    Second Line
-                                </p>
-                                <div class="input-field col s12 m6 l6">
-                                    <select ng-model="test" ng-change="select()" width="10">
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="hospital">โรงพยาบาล</option>
-                                        <option value="museum">พิพิธภัณฑ์</option>
-                                        <option value="park">สวนสาธารณะ</option>
-                                        <option value="police">สถานีตำรวจ</option>
-                                        <option value="restaurant">ร้านอาหาร</option>
-                                        <option value="store">ห้างสรรพสินค้า</option>
-                                        <option value="university">มหาวิทยาลัย</option>
-                                        <option value="night_club">สถานบันเทิง</option>
-                                        <option value="atm">ตู้ATM</option>
-                                    </select>
-                                    <label>เลือกสิ่งที่ต้องการจะหา
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>
-
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">ปิด</a>
-                    </div>
-                </div>
+            <div class="container hide-on-small-only">
                 <!-- menu Desktop-->
                 <div class="">
                     <div class="row card-panel">
@@ -347,7 +323,7 @@
                             <div class="indeterminate"></div>
                         </div>
                     </div>
-                    <!-- <div class="col s12 m6 l4">
+                    <div class="col s12 m6 l4">
                         <div class="wrapper wow slideInUp">
                             <div class="card radius shadowDepth1">
                                 <div class="card__image border-tlr-radius">
@@ -400,9 +376,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <!-- ********************************** -->
-                    <div ng-repeat="maps in routes">
+                    <!-- <div ng-repeat="maps in routes">
                         <div class="col s12 m6 l4">
                             <div class="wrapper wow slideInUp">
                                 <div class="card radius shadowDepth1">
@@ -429,7 +405,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- end ng-repeat -->
             </div>
             <!-- end row -->
