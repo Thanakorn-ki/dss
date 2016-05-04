@@ -32,55 +32,64 @@
                 text-overflow: ellipsis;
             }
 
+            body {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+
+            main {
+                flex: 1 0 auto;
+            }
         </style>
     </head>
     <body class="grey lighten-1">
 
-        <div ng-controller="TodoListController as todoList">
+        <div ng-controller="TodoListController as todoList" ng-init="getLocation()">
             <div class="navbar-fixed">
-                <nav class="blue lighten-3">
+                <nav class="blue-grey lighten-1">
                     <div class="nav-wrapper">
-                        <a href="#!" class="center brand-logo blue-grey-text text-darken-4">Decision Suport Route Selection</a>
-
+                        <a href="#" class="center brand-logo blue-grey-text text-lighten-5">Decision Suport Route Selection</a>
                     </div>
                 </nav>
             </div>
 
             <!-- full Mobile -->
             <div class="hide-on-large-only hide-on-med-only">
-            <!-- menu Desktop-->
-            <div class="">
-              <div class="row card-panel">
-                  <div class="col s12 m4 l4">
-                      <blockquote>
-                          <i class="material-icons tiny">my_location</i>
-                          ตำแหน่งปัจจุบัน :
-                          <div ng-show="false">
-                              <input type="text" id="lat" ng-model="Latitude">
-                              <input type="text" id="long" ng-model="Longitude">
-                          </div>
-                      </blockquote>
-                  </div>
-                  <div class="col s12 m4 l4">
-                      <div class="switch">
-                          <label>
-                              Off
-                              <input type="checkbox" ng-model="now_location" ng-click="getLocation()">
-                              <span class="lever"></span>
-                              On
-                          </label>
-                      </div>
-                  </div>
-                  <div class="col s12 m4 l4">
-                      <!-- <div ng-show="!now_location">
+                <!-- menu Desktop-->
+                <div class="">
+                    <!-- <div class="row card-panel">
+                        <div class="col s6 m4 l4">
+                            <blockquote>
+                                <i class="material-icons tiny">my_location</i>
+                                ตำแหน่งปัจจุบัน :
+                                <div ng-show="false">
+                                    <input type="text" id="lat" ng-model="Latitude">
+                                    <input type="text" id="long" ng-model="Longitude">
+                                </div>
+
+                            </blockquote>
+                        </div>
+                        <div class="col s6 m4 l4">
+                            <div class="switch">
+                                <label>
+                                    Off
+                                    <input type="checkbox" ng-model="now_location" ng-click="getLocation()">
+                                    <span class="lever"></span>
+                                    On
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col s12 m4 l4">
+                      <div ng-show="!now_location">
                           <div class="input-field col s6">
                               <i class="material-icons prefix">search</i>
                               <input id="icon_prefix" type="text" class="validate active">
                               <label for="icon_prefix">search</label>
                           </div>
-                      </div> -->
+                      </div>
                   </div>
-              </div>
+                    </div> -->
                     <div class="row card-panel">
                         <div class="input-field col s12 m6 l6">
                             <select ng-model="test" ng-change="select()" width="10">
@@ -110,75 +119,75 @@
                         </div>
                     </div>
                 </div>
-            <!-- end Menu -->
-            <!-- <div class="row"> -->
-            <!-- Progress -->
-            <div ng-show="load">
-                        <div class="progress">
-                            <div class="indeterminate"></div>
-                        </div>
+                <!-- end Menu -->
+                <!-- <div class="row"> -->
+                <!-- Progress -->
+                <div ng-show="load">
+                    <div class="progress">
+                        <div class="indeterminate"></div>
                     </div>
-                    <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
-                        <div class="wrapper wow slideInUp" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
-                            <div class="card radius shadowDepth1">
-                                <div class="card__image border-tlr-radius">
-                                    <img height="250px" ng-src="images/unnamed.jpg">
+                </div>
+                <!-- <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
+                    <div class="wrapper wow slideInUp" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
+                        <div class="card radius shadowDepth1">
+                            <div class="card__image border-tlr-radius">
+                                <img height="250px" ng-src="images/unnamed.jpg">
+                            </div>
+                            <div class="card__content card__padding">
+                                <div class="test">
+                                    <a class="btn-floating btn-large waves-effect waves-light blue" href="http://www.google.com">
+                                        <i class="small material-icons">navigation</i>
+                                    </a>
                                 </div>
-                                <div class="card__content card__padding">
-                                    <div class="test">
-                                        <a class="btn-floating btn-large waves-effect waves-light blue" href="http://www.google.com">
-                                            <i class="small material-icons">navigation</i>
-                                        </a>
-                                    </div>
-                                    <div class="card__meta">
-                                        <a href="#">ทางรถ</a>
-                                        <time>3.5 กม.</time>
-                                    </div>
-                                    <article class="card__article">
-                                        <h6>
-                                            50/6 ม.1 ต.ท่าข้าม อ.สามพราน จ.นครปฐม 73110
-                                        </h6>
+                                <div class="card__meta">
+                                    <a href="#">ทางรถ</a>
+                                    <time>3.5 กม.</time>
+                                </div>
+                                <article class="card__article">
+                                    <h6>
+                                        50/6 ม.1 ต.ท่าข้าม อ.สามพราน จ.นครปฐม 73110
+                                    </h6>
 
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
-                                    </article>
-                                </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+                                </article>
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
-                        <div class="wrapper wow slideInUp" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
-                            <div class="card radius shadowDepth1">
-                                <div class="card__image border-tlr-radius">
-                                    <img height="250px" ng-src="images/unnamed.jpg">
+                </div>
+                <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
+                    <div class="wrapper wow slideInUp" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
+                        <div class="card radius shadowDepth1">
+                            <div class="card__image border-tlr-radius">
+                                <img height="250px" ng-src="images/unnamed.jpg">
+                            </div>
+                            <div class="card__content card__padding">
+                                <div class="test">
+                                    <a class="btn-floating btn-large waves-effect waves-light blue" href="http://www.google.com">
+                                        <i class="small material-icons">navigation</i>
+                                    </a>
                                 </div>
-                                <div class="card__content card__padding">
-                                    <div class="test">
-                                        <a class="btn-floating btn-large waves-effect waves-light blue" href="http://www.google.com">
-                                            <i class="small material-icons">navigation</i>
-                                        </a>
-                                    </div>
-                                    <div class="card__meta">
-                                        <a href="#">ทางรถ</a>
-                                        <time>3.5 กม.</time>
-                                    </div>
-                                    <article class="card__article">
-                                        <h6>
-                                            50/6 ม.1 ต.ท่าข้าม อ.สามพราน จ.นครปฐม 73110
-                                        </h6>
+                                <div class="card__meta">
+                                    <a href="#">ทางรถ</a>
+                                    <time>3.5 กม.</time>
+                                </div>
+                                <article class="card__article">
+                                    <h6>
+                                        50/6 ม.1 ต.ท่าข้าม อ.สามพราน จ.นครปฐม 73110
+                                    </h6>
 
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
-                                    </article>
-                                </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+                                </article>
                             </div>
                         </div>
                     </div>
-            <!-- ********************************** -->
-            <!-- <div ng-repeat="maps in routes">
+                </div> -->
+                <!-- ********************************** -->
+                <div ng-repeat="maps in routes">
                       <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
                           <div class="wow sliderUP" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
                               <div class="card radius shadowDepth1">
                                   <div class="card__image border-tlr-radius">
-                                      <img height="300%" ng-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{maps.photos}}&key=AIzaSyA9pnLokpiT4egOd3J5Lhfb1I5PHmwyyXk">
+                                      <img height="300%" ng-src="{{maps.photos}}">
                                   </div>
                                   <div class="card__content card__padding">
                                       <div class="test">
@@ -201,17 +210,17 @@
                               </div>
                           </div>
                       </div>
-                  </div> -->
-            <!-- end ng-repeat -->
-            <!-- </div>-->
-          </div>
+                  </div>
+                <!-- end ng-repeat -->
+                </div>
             <!-- End full Mobile -->
-
+<!-- ///////////////////////////////////////////////////////////// -->
             <!-- Desktop -->
             <div class="container hide-on-small-only">
                 <!-- menu Desktop-->
+
                 <div class="">
-                    <div class="row card-panel">
+                    <!-- <div class="row card-panel">
                         <div class="col s12 m4 l4">
                             <blockquote>
                                 <i class="material-icons tiny">my_location</i>
@@ -241,7 +250,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row card-panel">
                         <div class="input-field col s12 m6 l6">
                             <select ng-model="test" ng-change="select()" width="10">
@@ -281,7 +290,7 @@
                             <div class="indeterminate"></div>
                         </div>
                     </div>
-                    <div class="col s12 m6 l4">
+                    <!-- <div class="col s12 m6 l4">
                         <div class="wrapper wow slideInUp">
                             <div class="card radius shadowDepth1">
                                 <div class="card__image border-tlr-radius">
@@ -334,9 +343,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- ********************************** -->
-                    <!-- <div ng-repeat="maps in routes">
+                    <div ng-repeat="maps in routes">
                         <div class="col s12 m6 l4">
                             <div class="wrapper wow slideInUp">
                                 <div class="card radius shadowDepth1">
@@ -363,25 +372,57 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
-                <!-- end ng-repeat -->
+                </div>
+                    <!-- end ng-repeat -->
+                </div>
+                <!-- end row -->
             </div>
-            <!-- end row -->
+            <!-- End Desktop -->
+            <!-- end Container -->
         </div>
-        <!-- End Desktop -->
-        <!-- end Container -->
-    </div>
-    <!-- end controller -->
-    <!-- ////////////////////////////////////////////////////////////////////////////////  -->
+        <!-- end controller -->
+        <!-- ////////////////////////////////////////////////////////////////////////////////  -->
+        <!-- <footer class="page-footer blue-grey">
+            <div class="container blue-grey">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h6 class="white-text">King Mongkut's University of Technology North Bangkok</h6>
+                        <p class="blue-grey-text text-lighten-5">1. Thanakorn Kitsawat</p>
+                        <p class="blue-grey-text text-lighten-5">2. Patthama Intaragumnerd</p>
+                        <p class="blue-grey-text text-lighten-5">3. Sinapas Juanngarm</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Thank by Develop</h5>
+                        <ul>
+                            <li>
+                                <a class="blue-grey-text text-lighten-5" href="http://materializecss.com/" target="_blank">Design</a>
+                            </li>
+                            <li>
+                                <a class="blue-grey-text text-lighten-5" href="https://developers.google.com/maps/">Api</a>
+                            </li>
+                            <li>
+                                <a class="blue-grey-text text-lighten-5" href="http://www.w3schools.com/">Location</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2016 Copyright Text
+                    <a class="blue-grey-text text-lighten-5 right" href="https://www.facebook.com/Aum.chinjung">Contact</a>
+                </div>
+            </div>
+        </footer> -->
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('select').material_select();
-        });
-        $(document).ready(function() {
-            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-            $('.modal-trigger').leanModal();
-        });
-    </script>
-</body>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+            $(document).ready(function() {
+                // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+                $('.modal-trigger').leanModal();
+            });
+        </script>
+    </body>
 </html>

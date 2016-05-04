@@ -10,11 +10,12 @@ angular.module('todoApp', ['ui.materialize'])
       if ($scope.now_location === true) {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition)
+          console.log($scope.now_location)
         } else {
           alert('Geolocation is not supported by this browser.')
         }
       } else {
-        console.log($scope.now_location)
+
       }
     }
 
