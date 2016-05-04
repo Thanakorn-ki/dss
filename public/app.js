@@ -7,15 +7,11 @@ angular.module('todoApp', ['ui.materialize'])
     $scope.location_now = '13.7468351,100.5327397'
     $scope.key = 'AIzaSyDTx6k0EMtaMUJL1gP9w4rDc4qwp8LnDMc'
     $scope.getLocation = function () {
-      if ($scope.now_location === true) {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition)
-          console.log($scope.now_location)
-        } else {
-          alert('Geolocation is not supported by this browser.')
-        }
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition)
+        console.log($scope.now_location)
       } else {
-
+        alert('Geolocation is not supported by this browser.')
       }
     }
 
