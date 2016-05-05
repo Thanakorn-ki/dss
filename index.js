@@ -10,7 +10,7 @@ app.post('/search', json, function (req, res) {
   request('https://maps.googleapis.com/maps/api/place/textsearch/json?location=' + data.location_now + '&query=' + data.test + '&radius=' + data.radius + '&key=' + key + '&language=th', function (error, response, body) {
     if (!error && response.statusCode === 200) {
       res.send(body)
-      // console.log('https://maps.googleapis.com/maps/api/place/textsearch/json?location=' + data.location_now + '&query=' + data.test + '&radius=' + data.radius + '&key=' + key + '&language=th')
+      console.log('https://maps.googleapis.com/maps/api/place/textsearch/json?location=' + data.location_now + '&query=' + data.test + '&radius=' + data.radius + '&key=' + key + '&language=th')
     }
   })
 })

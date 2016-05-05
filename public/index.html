@@ -2,9 +2,11 @@
 <html ng-app="todoApp">
     <head>
         <meta charset="utf-8">
-        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+        <script src="js/jquery-2.2.3.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!-- Video -->
+        <script src="js/jquery.vide.js"></script>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="/css/materialize.min.css">
         <!-- /////////////////////// -->
@@ -41,10 +43,11 @@
             main {
                 flex: 1 0 auto;
             }
+
         </style>
     </head>
+    <!--  data-vide-bg="video/Time" -->
     <body class="grey lighten-1">
-
         <div ng-controller="TodoListController as todoList" ng-init="getLocation()">
             <div class="navbar-fixed">
                 <nav class="blue-grey lighten-1">
@@ -183,44 +186,43 @@
                 </div> -->
                 <!-- ********************************** -->
                 <div ng-repeat="maps in routes">
-                      <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
-                          <div class="wow sliderUP" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
-                              <div class="card radius shadowDepth1">
-                                  <div class="card__image border-tlr-radius">
-                                      <img height="300%" ng-src="{{maps.photos}}">
-                                  </div>
-                                  <div class="card__content card__padding">
-                                      <div class="test">
-                                          <a class="btn-floating btn-large waves-effect waves-light blue"
-                                             href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}/data=!3m1!4b1!4m2!4m1!3e0"
-                                             target="_blank" >
-                                              <i class="small material-icons">navigation</i>
-                                          </a>
-                                      </div>
-                                      <div class="card__meta">
-                                          <a href="#">ทางรถ</a>
-                                          <time>{{maps.distance.text}}</p></time>
-                                      </div>
-                                      <article class="card__article">
-                                          <h6>{{maps.name}}</h6>
+                    <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
+                        <div class="wow sliderUP" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
+                            <div class="card radius shadowDepth1">
+                                <div class="card__image border-tlr-radius">
+                                    <img height="300%" ng-src="{{maps.photos}}">
+                                </div>
+                                <div class="card__content card__padding">
+                                    <div class="test">
+                                        <a class="btn-floating btn-large waves-effect waves-light blue" href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}/data=!3m1!4b1!4m2!4m1!3e0" target="_blank">
+                                            <i class="small material-icons">navigation</i>
+                                        </a>
+                                    </div>
+                                    <div class="card__meta">
+                                        <a href="#">ทางรถ</a>
+                                        <time>{{maps.distance.text}}</p>
+                                    </time>
+                                </div>
+                                <article class="card__article">
+                                    <h6>{{maps.name}}</h6>
 
-                                          <p>{{maps.vicinity}}</p>
-                                      </article>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                <!-- end ng-repeat -->
+                                    <p>{{maps.vicinity}}</p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <!-- End full Mobile -->
-<!-- ///////////////////////////////////////////////////////////// -->
-            <!-- Desktop -->
-            <div class="container hide-on-small-only">
-                <!-- menu Desktop-->
+            </div>
+            <!-- end ng-repeat -->
+        </div>
+        <!-- End full Mobile -->
+        <!-- ///////////////////////////////////////////////////////////// -->
+        <!-- Desktop -->
+        <div class="container hide-on-small-only">
+            <!-- menu Desktop-->
 
-                <div class="">
-                    <!-- <div class="row card-panel">
+            <div class="">
+                <!-- <div class="row card-panel">
                         <div class="col s12 m4 l4">
                             <blockquote>
                                 <i class="material-icons tiny">my_location</i>
@@ -251,46 +253,46 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="row card-panel">
-                        <div class="input-field col s12 m6 l6">
-                            <select ng-model="test" ng-change="select()" width="10">
-                                <option value="" disabled selected>Choose your option</option>
-                                <option value="hospital">โรงพยาบาล</option>
-                                <option value="museum">พิพิธภัณฑ์</option>
-                                <option value="park">สวนสาธารณะ</option>
-                                <option value="police">สถานีตำรวจ</option>
-                                <option value="restaurant">ร้านอาหาร</option>
-                                <option value="store">ห้างสรรพสินค้า</option>
-                                <option value="university">มหาวิทยาลัย</option>
-                                <option value="night_club">สถานบันเทิง</option>
-                                <option value="atm">ตู้ATM</option>
-                            </select>
-                            <label>เลือกสิ่งที่ต้องการจะหา
-                            </label>
-                        </div>
-                        <div class="col s12 m6 l6">
-                            <form action="#">
-                                <p class="range-field">
-                                    <label>ระยะทาง : เมตร
-                                        {{radius}}</label>
-                                    <input type="range" id="test5" ng-model="radius" min="500" max="1000" ng-change="select()"/>
+                <div class="row card-panel">
+                    <div class="input-field col s12 m6 l6">
+                        <select ng-model="test" ng-change="select()" width="10">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="hospital">โรงพยาบาล</option>
+                            <option value="museum">พิพิธภัณฑ์</option>
+                            <option value="park">สวนสาธารณะ</option>
+                            <option value="police">สถานีตำรวจ</option>
+                            <option value="restaurant">ร้านอาหาร</option>
+                            <option value="store">ห้างสรรพสินค้า</option>
+                            <option value="university">มหาวิทยาลัย</option>
+                            <option value="night_club">สถานบันเทิง</option>
+                            <option value="atm">ตู้ATM</option>
+                        </select>
+                        <label>เลือกสิ่งที่ต้องการจะหา
+                        </label>
+                    </div>
+                    <div class="col s12 m6 l6">
+                        <form action="#">
+                            <p class="range-field">
+                                <label>ระยะทาง : เมตร
+                                    {{radius}}</label>
+                                <input type="range" id="test5" ng-model="radius" min="500" max="1000" ng-change="select()"/>
 
-                                </p>
-                            </form>
-                        </div>
+                            </p>
+                        </form>
                     </div>
                 </div>
-                <!-- end Menu -->
-                <!-- ************************************************************************* -->
+            </div>
+            <!-- end Menu -->
+            <!-- ************************************************************************* -->
 
-                <div class="row">
-                    <!-- Progress -->
-                    <div ng-show="load">
-                        <div class="progress">
-                            <div class="indeterminate"></div>
-                        </div>
+            <div class="row">
+                <!-- Progress -->
+                <div ng-show="load">
+                    <div class="progress">
+                        <div class="indeterminate"></div>
                     </div>
-                    <!-- <div class="col s12 m6 l4">
+                </div>
+                <!-- <div class="col s12 m6 l4">
                         <div class="wrapper wow slideInUp">
                             <div class="card radius shadowDepth1">
                                 <div class="card__image border-tlr-radius">
@@ -344,8 +346,8 @@
                             </div>
                         </div>
                     </div> -->
-                    <!-- ********************************** -->
-                    <div ng-repeat="maps in routes">
+                <!-- ********************************** -->
+                <div ng-repeat="maps in routes">
                         <div class="col s12 m6 l4">
                             <div class="wrapper wow slideInUp">
                                 <div class="card radius shadowDepth1">
@@ -373,16 +375,16 @@
                         </div>
                     </div>
                 </div>
-                    <!-- end ng-repeat -->
-                </div>
-                <!-- end row -->
+                <!-- end ng-repeat -->
             </div>
-            <!-- End Desktop -->
-            <!-- end Container -->
+            <!-- end row -->
         </div>
-        <!-- end controller -->
-        <!-- ////////////////////////////////////////////////////////////////////////////////  -->
-        <!-- <footer class="page-footer blue-grey">
+        <!-- End Desktop -->
+        <!-- end Container -->
+    </div>
+    <!-- end controller -->
+    <!-- ////////////////////////////////////////////////////////////////////////////////  -->
+    <!-- <footer class="page-footer blue-grey">
             <div class="container blue-grey">
                 <div class="row">
                     <div class="col l6 s12">
@@ -414,15 +416,15 @@
                 </div>
             </div>
         </footer> -->
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('select').material_select();
-            });
-            $(document).ready(function() {
-                // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-                $('.modal-trigger').leanModal();
-            });
-        </script>
-    </body>
+    <!-- <script>window.jQuery || document.write('<script src="/js/jquery-2.2.3.min.js"><\/script>')</script> -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+        $(document).ready(function() {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
+    </script>
+</body>
 </html>

@@ -9,7 +9,6 @@ angular.module('todoApp', ['ui.materialize'])
     $scope.getLocation = function () {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition)
-        console.log($scope.now_location)
       } else {
         alert('Geolocation is not supported by this browser.')
       }
@@ -19,6 +18,7 @@ angular.module('todoApp', ['ui.materialize'])
       $scope.Latitude = position.coords.latitude
       $scope.Longitude = position.coords.longitude
       $scope.location_now = $scope.Latitude + ',' + $scope.Longitude
+      console.log($scope.location_now)
     }
 
     $scope.select = function () {
