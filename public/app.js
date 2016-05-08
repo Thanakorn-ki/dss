@@ -33,11 +33,11 @@ angular.module('todoApp', ['ui.materialize'])
       if ($scope.test !== '' && $scope.radius !== 0) {
         $http.post('/search', data).then(function (req, res) {
           if (req.data.status === 'OK') {
-            $scope.load = false
             $scope.map = req.data.results
             $scope.map.forEach(function (item) {
               ways(item)
             })
+            $scope.load = false
           } else if (req.data.status === 'OVER_QUERY_LIMIT') {
             $scope.load = false
             console.log('Time LIMIT(ค้นหา)')
