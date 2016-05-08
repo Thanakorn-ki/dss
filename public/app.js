@@ -62,7 +62,7 @@ angular.module('todoApp', ['ui.materialize'])
             pho = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + item.photos[0].photo_reference + '&key=' + $scope.key
           }
           if (req.data.routes[0].legs[0].distance.value <= ($scope.radius * 1000)) {
-            var temp = {
+            $scope.temp = {
               icon: item.icon,
               name: item.name,
               geometry: {
