@@ -118,7 +118,7 @@
                                 <p class="range-field">
                                     <label>ระยะทาง : เมตร
                                         {{radius}}</label>
-                                    <input type="range" id="test5" ng-model="radius" min="500" max="1000" ng-change="select()"/>
+                                    <input type="range" id="test5" ng-model="radius" min="10" max="100" ng-change="select()"/>
 
                                 </p>
                             </form>
@@ -276,9 +276,8 @@
                     <div class="col s12 m6 l6">
                         <form action="#">
                             <p class="range-field">
-                                <label>ระยะทาง : เมตร
-                                    {{radius}}</label>
-                                <input type="range" id="test5" ng-model="radius" min="500" max="1000" ng-change="select()"/>
+                                <label>ระยะทาง : {{radius}} กิโลเมตร</label>
+                                <input type="range" id="text5" ng-model="radius" min="10" max="100" ng-change="select()"/>
 
                             </p>
                         </form>
