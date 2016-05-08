@@ -76,7 +76,7 @@ angular.module('todoApp', ['ui.materialize'])
               photos: pho,
               vicinity: item.formatted_address
             }
-            $scope.routes.push(temp)
+            $scope.routes.push($scope.temp)
             $scope.routes.sort(function (a, b) { // เรียงค่า น้อย ไป มาก
               if (a.distance.value > b.distance.value) return 1
               if (a.distance.value < b.distance.value) return -1
